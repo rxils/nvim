@@ -9,7 +9,6 @@ vim.call('plug#begin')
 
 Plug('nvim-tree/nvim-tree.lua')
 --Plug('rktjmp/lush.nvim')
---Plug('rxils/triplebaka-dark')
 Plug('nvim-lualine/lualine.nvim')
 
 Plug('neovim/nvim-lspconfig')
