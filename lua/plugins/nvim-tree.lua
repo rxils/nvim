@@ -21,7 +21,7 @@ require("nvim-tree").setup({
           renamed = "R",
           deleted = "D",
           untracked = "-",
-          ignored = "_"
+          ignored = "X"
         },
         folder = {
           default = " ",

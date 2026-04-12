@@ -50,6 +50,8 @@ lsp_setup('csharp_ls', {})
 
 lsp_setup('rust_analyzer', {})
 
+lsp_setup('clangd', {})
+
 lsp_setup('r_language_server', {})
 
 lsp_setup('julials', {})

@@ -90,7 +90,7 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<C-w>[', '',
   end })
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-w>]', '',
   { callback = function ()
-    vim.diagnostic.jump({ count = -1, float = true })
+    vim.diagnostic.jump({ count = 1, float = true })
   end })
 
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>q', '<Esc>:tabnew<CR>')
