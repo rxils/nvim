@@ -84,10 +84,14 @@ vim.diagnostic.config({ virtual_text = false })
 
 
 
-vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>d', '',
-  { callback = vim.diagnostic.goto_next })
-vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>s', '',
-  { callback = vim.diagnostic.goto_prev })
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-w>[', '',
+  { callback = function ()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end })
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-w>]', '',
+  { callback = function ()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end })
 
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>q', '<Esc>:tabnew<CR>')
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>r', '<Esc>:tabclose<CR>')
