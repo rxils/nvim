@@ -63,5 +63,32 @@ return {
     lsp_setup('r_language_server', {})
 
     lsp_setup('julials', {})
+
+
+    vim.o.updatetime = 100
+    vim.api.nvim_create_autocmd('LspAttach', {
+      callback = function (args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client and client:supports_method('textDocument/documentHighlight') then
+          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            buffer = args.buf,
+            callback = vim.lsp.buf.document_highlight,
+          })
+          vim.api.nvim_create_autocmd('CursorMoved', {
+            buffer = args.buf,
+            callback = vim.lsp.buf.clear_references,
+          })
+        end
+      end,
+    })
+
+    vim.api.nvim_create_autocmd('LspAttach', {
+      once = true,
+      callback = function ()
+        vim.cmd[[hi! LspReferenceText cterm=bold,underline]]
+        vim.cmd[[hi! LspReferenceRead cterm=bold,underline]]
+        vim.cmd[[hi! LspReferenceWrite cterm=bold,underline]]
+      end
+    })
   end
 }

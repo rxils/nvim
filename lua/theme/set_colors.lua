@@ -1,6 +1,4 @@
 local set_colors = function (dark)
-  local vim = vim
-
   local red             = 1 + dark * 8
   local green           = 2 + dark * 8
   local yellow          = 3 + dark * 8

@@ -20,7 +20,7 @@ return {
 
     cmp.setup({
       snippet = {
-        expand = function(args)
+        expand = function (args)
           vim.snippet.expand(args.body)
         end
       },
