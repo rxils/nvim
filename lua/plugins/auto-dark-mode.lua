@@ -4,7 +4,8 @@ return {
   dependencies = {
     'nvim-lualine/lualine.nvim',
     'HiPhish/rainbow-delimiters.nvim',
-    'lukas-reineke/indent-blankline.nvim'
+    'lukas-reineke/indent-blankline.nvim',
+    'nvim-tree/nvim-tree.lua'
   },
 
   config = function ()

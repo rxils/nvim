@@ -68,12 +68,15 @@ local set_plugins = function (dark)
     indent = {
       highlight = {
         'BlankLine'
-      }
+      },
+      char = '│'
     },
     scope = {
       enabled = false,
     }
   })
+
+  vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { ctermfg = c.gray_linenr })
 
   vim.api.nvim_set_hl(0, 'RainbowRed',    { ctermfg = c.red })
   vim.api.nvim_set_hl(0, 'RainbowYellow', { ctermfg = c.yellow })
