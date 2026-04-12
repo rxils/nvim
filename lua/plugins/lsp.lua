@@ -64,6 +64,10 @@ return {
 
     lsp_setup('julials', {})
 
+    lsp_setup('jdtls', {})
+
+    lsp_setup('kotlin_lsp', {})
+
 
     vim.o.updatetime = 100
     vim.api.nvim_create_autocmd('LspAttach', {
