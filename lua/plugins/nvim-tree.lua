@@ -3,10 +3,14 @@ return {
 
   opts = {
     renderer = {
+      indent_markers = {
+        enable = true,
+      },
       icons = {
+        git_placement = "signcolumn",
         show = {
-          file = true,
-          folder = true,
+          file = false,
+          folder = false,
           folder_arrow = false,
           git = true,
           modified = false,
@@ -15,8 +19,6 @@ return {
           bookmarks = false
         },
         glyphs = {
-          default = " ",
-          symlink = "@",
           git = {
             unstaged = "?",
             staged = "O",
@@ -25,14 +27,7 @@ return {
             deleted = "D",
             untracked = "-",
             ignored = "X"
-          },
-          folder = {
-            default = " ",
-            open = " ",
-            empty = " ",
-            empty_open = " ",
-            symlink = "@",
-          },
+          }
         }
       }
     }
@@ -42,5 +37,5 @@ return {
     require('nvim-tree').setup(opts)
 
     vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<Esc>:NvimTreeToggle<CR>')
-  end,
+  end
 }
