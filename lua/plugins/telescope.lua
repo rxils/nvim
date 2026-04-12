@@ -9,7 +9,31 @@ return {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
 
-  config = function ()
+  opts = {
+    defaults = {
+      vimgrep_arguments = {
+        'rg',
+        '--color=never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        '--no-ignore',
+        '--hidden',
+      },
+    },
+
+    pickers = {
+      find_files = {
+        find_command = { 'rg', '--files', '--no-ignore', '--hidden' },
+      },
+    },
+  },
+
+  config = function (_, opts)
+    require('telescope').setup(opts)
+
     local builtin = require('telescope.builtin')
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
