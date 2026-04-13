@@ -60,9 +60,21 @@ return {
 
     lsp_setup('julials', {})
 
-    lsp_setup('jdtls', {})
+    --lsp_setup('jdtls', {})
 
-    --lsp_setup('kotlin_lsp', {})
+    -- https://github.com/Hessesian/kotlin-lsp
+    -- cargo install kotlin-lsp
+    local lspconfig = require('lspconfig')
+    lsp_setup('kotlin_lsp', {
+      default_config = {
+        cmd       = { '~/.cargo/bin/kotlin-lsp' },
+        filetypes = { 'kotlin', 'java' },
+        root_dir  = lspconfig.util.root_pattern(
+          'build.gradle', 'build.gradle.kts', 'pom.xml', 'settings.gradle', '.git'
+        ),
+        settings  = {}
+      }
+    })
 
     vim.o.updatetime = 100
     vim.api.nvim_create_autocmd('LspAttach', {
