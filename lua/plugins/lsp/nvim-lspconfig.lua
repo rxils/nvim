@@ -28,6 +28,10 @@ return {
       }
     })
 
+    lsp_setup('vimls', {})
+
+    lsp_setup('bashls', {})
+
     lsp_setup('pyright', {})
 
     lsp_setup('ruby_lsp', {
@@ -101,5 +105,10 @@ return {
         end
       end
     })
+
+    vim.keymap.set({ 'n', 'i', 'v' }, '<C-p>', '',
+      { callback = function ()
+        vim.lsp.buf.hover()
+      end })
   end
 }
