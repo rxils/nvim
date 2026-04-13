@@ -2,6 +2,7 @@ return {
   'nvim-tree/nvim-tree.lua',
 
   opts = {
+    view = { adaptive_size = true },
     renderer = {
       indent_markers = {
         enable = true,
@@ -37,5 +38,13 @@ return {
     require('nvim-tree').setup(opts)
 
     vim.keymap.set({ 'n', 'i', 'v' }, '<C-s>', '<Esc>:NvimTreeToggle<CR>')
+
+    vim.api.nvim_create_user_command('E', function (opts_)
+      local path = opts_.args ~= "" and opts_.args or vim.fn.getcwd()
+      vim.api.nvim_cmd({ cmd = "NvimTreeOpen", args = { path }}, {})
+    end, {
+      nargs = '?',
+      complete = 'dir'
+    })
   end
 }
