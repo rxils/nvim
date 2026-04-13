@@ -28,10 +28,6 @@ return {
       }
     })
 
-    lsp_setup('vimls', {})
-
-    lsp_setup('bashls', {})
-
     lsp_setup('pyright', {})
 
     lsp_setup('ruby_lsp', {
@@ -67,7 +63,6 @@ return {
     lsp_setup('jdtls', {})
 
     lsp_setup('kotlin_lsp', {})
-
 
     vim.o.updatetime = 100
     vim.api.nvim_create_autocmd('LspAttach', {

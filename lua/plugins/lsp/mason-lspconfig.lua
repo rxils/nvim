@@ -10,7 +10,7 @@ return {
     ensure_installed = {
       'lua_ls',
       'vimls',
-      'kotlin_lsp'
+      'bashls'
     }
   }
 }
