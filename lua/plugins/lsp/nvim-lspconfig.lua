@@ -62,7 +62,7 @@ return {
 
     lsp_setup('jdtls', {})
 
-    lsp_setup('kotlin_lsp', {})
+    --lsp_setup('kotlin_lsp', {})
 
     vim.o.updatetime = 100
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -71,11 +71,15 @@ return {
         if client and client:supports_method('textDocument/documentHighlight') then
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = args.buf,
-            callback = vim.lsp.buf.document_highlight,
+            callback = function ()
+              pcall(vim.lsp.buf.document_highlight)
+            end
           })
           vim.api.nvim_create_autocmd('CursorMoved', {
             buffer = args.buf,
-            callback = vim.lsp.buf.clear_references,
+            callback = function ()
+              pcall(vim.lsp.buf.clear_references)
+            end
           })
         end
       end,
@@ -87,6 +91,14 @@ return {
         vim.cmd[[hi! LspReferenceText cterm=bold,underline]]
         vim.cmd[[hi! LspReferenceRead cterm=bold,underline]]
         vim.cmd[[hi! LspReferenceWrite cterm=bold,underline]]
+      end
+    })
+
+    vim.api.nvim_create_autocmd('VimLeavePre', {
+      callback = function ()
+        for _, client in ipairs(vim.lsp.get_clients()) do
+          client:stop(true)
+        end
       end
     })
   end
