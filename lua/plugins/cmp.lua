@@ -28,7 +28,9 @@ return {
         ['<Tab>'] = cmp_f(cmp.mapping.select_next_item()),
         ['<S-Tab>'] = cmp_f(cmp.mapping.select_prev_item()),
         ['<C-q>'] = cmp_f(cmp.mapping.abort()),
-        ['<CR>'] = cmp_f(cmp.mapping.confirm({ select = true }))
+        ['<CR>'] = cmp_f(cmp.mapping.confirm({ select = true })),
+        ['<C-j>'] = cmp_f(cmp.mapping.scroll_docs(4)),
+        ['<C-k>'] = cmp_f(cmp.mapping.scroll_docs(-4))
       }),
       sources = {
         { name = 'nvim_lsp' },

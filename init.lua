@@ -23,11 +23,11 @@ vim.g.netrw_liststyle = 3
 
 vim.diagnostic.config({ virtual_text = false })
 
-vim.keymap.set({ 'n', 'i', 'v' }, '<C-w>[', '',
+vim.keymap.set({ 'n' }, '<C-w>[', '',
   { callback = function ()
     vim.diagnostic.jump({ count = -1, float = true })
   end })
-vim.keymap.set({ 'n', 'i', 'v' }, '<C-w>]', '',
+vim.keymap.set({ 'n' }, '<C-w>]', '',
   { callback = function ()
     vim.diagnostic.jump({ count = 1, float = true })
   end })
@@ -37,3 +37,8 @@ vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>r', '<Esc>:tabclose<CR>')
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>w', '<Esc>:tabprevious<CR>')
 vim.keymap.set({ 'n', 'i', 'v' }, '<C-q>e', '<Esc>:tabnext<CR>')
 vim.cmd('cnoreabbrev W w')
+
+vim.keymap.set({ 'i' }, '<C-h>', '<Left>')
+vim.keymap.set({ 'i' }, '<C-j>', '<Down>')
+vim.keymap.set({ 'i' }, '<C-k>', '<Up>')
+vim.keymap.set({ 'i' }, '<C-l>', '<Right>')
